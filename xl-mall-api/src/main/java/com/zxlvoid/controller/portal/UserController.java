@@ -2,6 +2,8 @@ package com.zxlvoid.controller.portal;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,10 @@ import com.zxlvoid.common.ServerResponse;
 import com.zxlvoid.pojo.User;
 import com.zxlvoid.service.IUserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 
 /**
  * 
@@ -24,13 +30,14 @@ import com.zxlvoid.service.IUserService;
 @RequestMapping("/user/")
 public class UserController {
 	
-	
+	private Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	private IUserService iUserService;
 	
-	@GetMapping("test")
+	@PostMapping("test")
 	public ServerResponse<String> hello() {
 		ServerResponse<String> testApi = iUserService.testApi();
+		logger.info("testtesttesttesttesttesttesttesttesttesttesttest11111111111111111111111111111111");
 		return testApi;
 	}
 	
@@ -42,6 +49,7 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping("login.do")
+	@ApiOperation(value = "根据账号密码登录")
 	public ServerResponse<User> login(String username,String password,HttpSession session) {
 		ServerResponse<User> response = iUserService.login(username, password);
 		if(response.isSuccess()) {
@@ -50,24 +58,24 @@ public class UserController {
 		return response;
 	}
 	
-	@GetMapping("logout.do")
+	@PostMapping("logout.do")
 	public ServerResponse<String> logout(HttpSession session){
 		session.removeAttribute(Const.CURRENT_USER);
 		return ServerResponse.createBySuccess();
 	}
 	
-	@GetMapping("register.do")
+	@PostMapping("register.do")
 	public ServerResponse<String> register(User user){
 		ServerResponse<String> response = iUserService.register(user);
 		return response;
 	}
 	
-	@GetMapping("check_valid.do")
+	@PostMapping("check_valid.do")
 	public ServerResponse<String> checkValid(String str,String type){
 		return iUserService.checkVaild(str, type);
 	}
 	
-	@GetMapping("get_user_info.do")
+	@PostMapping("get_user_info.do")
 	public ServerResponse<User> getUserInfo(HttpSession session){
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if(user != null) {
@@ -76,22 +84,22 @@ public class UserController {
 		return ServerResponse.createByErrorMessage("用户未登录,无法获取详细信息");
 	}
 	
-	@GetMapping("forget_get_question.do")
+	@PostMapping("forget_get_question.do")
 	public ServerResponse<String> forgetGetQuestion(String username){
 		 return iUserService.selectQuestion(username);
 	}
 	
-	@GetMapping("forget_check_answer.do")
+	@PostMapping("forget_check_answer.do")
 	public ServerResponse<String> forgetCheckAnswer(String username,String question,String answer){
 		return iUserService.checkAnswer(username, question, answer);
 	}
 	
-	@GetMapping("forget_reset_password.do")
+	@PostMapping("forget_reset_password.do")
 	public ServerResponse<String> forgetResetPassword(String username,String passwordNew,String forgetToken){
 		return iUserService.forgetResetPassword(username, passwordNew, forgetToken);
 	}
 	
-	@GetMapping("reset_password.do")
+	@PostMapping("reset_password.do")
 	public ServerResponse<String> resetPassword(HttpSession session,String passwordOld,String passwordNew){
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if(user == null) {
@@ -100,7 +108,7 @@ public class UserController {
 		return iUserService.resetPassword(passwordOld, passwordNew, user);
 	}
 	
-	@GetMapping("update_information.do")
+	@PostMapping("update_information.do")
 	public ServerResponse<User> update_information(HttpSession session,User user){
 		User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
 		if(currentUser == null) {
