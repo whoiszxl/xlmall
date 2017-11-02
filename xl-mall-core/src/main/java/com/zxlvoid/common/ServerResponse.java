@@ -4,14 +4,13 @@ import java.io.Serializable;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 /**
  * 
  * @author whoiszxl
  *
  */
-@JsonSerialize(include = Inclusion.NON_NULL)
+@JsonSerialize(include =  JsonSerialize.Inclusion.NON_NULL)
 public class ServerResponse<T> implements Serializable {
 
 	/**
