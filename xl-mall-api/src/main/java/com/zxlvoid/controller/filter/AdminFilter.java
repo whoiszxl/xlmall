@@ -66,12 +66,12 @@ public class AdminFilter implements Filter{
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		ServerResponse<String> errorObj = null;
 		if(user == null) {
-			logger.warn("用户未登录,请登录");
 			errorObj = ServerResponse.createByErrorMessage("用户未登录,请登录");
 		}else if(this.iUserService.checkAdminRole(user).isSuccess()) {
 			//是管理员,过滤器放行
             chain.doFilter(request, response);
 		}else {
+			logger.warn("用户名为:"+user.getUsername()+" 的用户试图访问管理员权限.......");
 			errorObj = ServerResponse.createByErrorMessage("无权限操作,需要管理员权限");
 		}
 		
