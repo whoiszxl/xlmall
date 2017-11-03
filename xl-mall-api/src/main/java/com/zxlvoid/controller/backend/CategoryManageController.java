@@ -23,9 +23,6 @@ import com.zxlvoid.service.IUserService;
 @RestController
 @RequestMapping("/manage/category")
 public class CategoryManageController {
-
-	@Autowired
-	private IUserService iUserService;
 	
 	@Autowired
     private ICategoryService iCategoryService;
@@ -45,7 +42,6 @@ public class CategoryManageController {
     public ServerResponse<?> getChildrenParallelCategory(HttpSession session,@RequestParam(value = "categoryId" ,defaultValue = "0") Integer categoryId){
        //查询子节点的category信息,并且不递归,保持平级
        return iCategoryService.getChildrenParallelCategory(categoryId);
-        
     }
 
     @GetMapping("get_deep_category.do")

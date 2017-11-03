@@ -1,5 +1,9 @@
 package com.zxlvoid.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.zxlvoid.pojo.Product;
 
 public interface ProductMapper {
@@ -14,4 +18,11 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+    
+    
+    List<Product> selectList();
+
+    List<Product> selectByNameAndProductId(@Param("productName")String productName,@Param("productId") Integer productId);
+
+    List<Product> selectByNameAndCategoryIds(@Param("productName")String productName,@Param("categoryIdList")List<Integer> categoryIdList);
 }
