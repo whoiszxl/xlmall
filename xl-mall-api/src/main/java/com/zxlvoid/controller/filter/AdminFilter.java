@@ -1,6 +1,10 @@
 package com.zxlvoid.controller.filter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -30,13 +34,18 @@ import com.zxlvoid.service.IUserService;
  * @author whoiszxl
  *
  */
-@Component
+//@Component
 public class AdminFilter implements Filter{
 	
 	@Autowired
 	private IUserService iUserService;
 	
 	private Logger logger = LoggerFactory.getLogger(AdminFilter.class);
+	
+	/**
+     * 封装，不需要过滤的list列表
+     */
+    protected static List<Pattern> patterns = new ArrayList<Pattern>();
 	
 	public IUserService getiUserService() {
 		return iUserService;
@@ -55,6 +64,8 @@ public class AdminFilter implements Filter{
 		ServletContext context = filterConfig.getServletContext();
 		WebApplicationContext ctxs = WebApplicationContextUtils.getWebApplicationContext(context);
 		iUserService = (IUserService) ctxs.getBean("iUserService");
+		Pattern p = Pattern.compile("/manage/user/login");
+		patterns.add(p);
 	}
 
 	@Override
@@ -62,6 +73,15 @@ public class AdminFilter implements Filter{
 			throws IOException, ServletException {
 		
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+		
+		//校验uri，排除不需要过滤的 
+		String url = httpServletRequest.getRequestURI().substring(httpServletRequest.getContextPath().length());
+		if(isInclude(url)) {
+			logger.info("校验通过");
+			chain.doFilter(request, response);
+			return;
+		}
+		
 		HttpSession session = httpServletRequest.getSession();
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		ServerResponse<String> errorObj = null;
@@ -70,6 +90,7 @@ public class AdminFilter implements Filter{
 		}else if(this.iUserService.checkAdminRole(user).isSuccess()) {
 			//是管理员,过滤器放行
             chain.doFilter(request, response);
+            return;
 		}else {
 			logger.warn("用户名为:"+user.getUsername()+" 的用户试图访问管理员权限.......");
 			errorObj = ServerResponse.createByErrorMessage("无权限操作,需要管理员权限");
@@ -86,5 +107,20 @@ public class AdminFilter implements Filter{
 	public void destroy() {
 		System.out.println("AdminFilter.destroy()");
 	}
+	
+	/**
+     * 是否需要过滤
+     * @param url
+     * @return
+     */
+    private boolean isInclude(String url) {
+        for (Pattern pattern : patterns) {
+            Matcher matcher = pattern.matcher(url);
+            if (matcher.matches()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

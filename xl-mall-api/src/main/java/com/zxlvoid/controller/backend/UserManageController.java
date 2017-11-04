@@ -28,9 +28,9 @@ public class UserManageController {
 	@Autowired
 	private IUserService iUserService;
 	
-	@PostMapping("login.do")
+	@PostMapping("login")
 	@ApiOperation(value="后台管理员登录")
-	public ServerResponse<User> login(@ApiParam("用户名") String username,@ApiParam("密码") String password,HttpSession session){
+	public ServerResponse<User> login(String username,String password,HttpSession session){
 		ServerResponse<User> response = iUserService.login(username, password);
 		if(response.isSuccess()) {
 			User user = response.getData();

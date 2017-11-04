@@ -1,7 +1,7 @@
 spring:
   datasource:
     name: xlmall
-    url: jdbc:mysql://app.chenyuspace.com:3306/xlmall?characterEncoding=utf-8
+    url: jdbc:mysql://app.chenyuspace.com:3306/xlmall?characterEncoding=utf-8&useSSL=true
     username: xlmall
     password: 669731945
     type: com.alibaba.druid.pool.DruidDataSource
