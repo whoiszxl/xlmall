@@ -49,7 +49,6 @@ public class TimeFilter implements Filter {
 		// 校验uri，排除不需要过滤的
 		String url = httpServletRequest.getRequestURI().substring(httpServletRequest.getContextPath().length());
 		if (isInclude(url)) {
-			logger.info("校验通过");
 			chain.doFilter(request, response);
 			return;
 		}

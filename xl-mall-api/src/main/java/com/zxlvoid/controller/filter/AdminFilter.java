@@ -77,7 +77,6 @@ public class AdminFilter implements Filter{
 		//校验uri，排除不需要过滤的 
 		String url = httpServletRequest.getRequestURI().substring(httpServletRequest.getContextPath().length());
 		if(isInclude(url)) {
-			logger.info("校验通过");
 			chain.doFilter(request, response);
 			return;
 		}
@@ -86,7 +85,7 @@ public class AdminFilter implements Filter{
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		ServerResponse<String> errorObj = null;
 		if(user == null) {
-			errorObj = ServerResponse.createByErrorMessage("用户未登录,请登录");
+			errorObj = ServerResponse.createByErrorMessage("管理员未登录,请登录");
 		}else if(this.iUserService.checkAdminRole(user).isSuccess()) {
 			//是管理员,过滤器放行
             chain.doFilter(request, response);

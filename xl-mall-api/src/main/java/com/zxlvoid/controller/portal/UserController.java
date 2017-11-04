@@ -26,6 +26,7 @@ import io.swagger.annotations.ApiParam;
  * @author whoiszxl
  *
  */
+@Api(value = "前台用户模块",description="前台用户模块")
 @RestController
 @RequestMapping("/user/")
 public class UserController {

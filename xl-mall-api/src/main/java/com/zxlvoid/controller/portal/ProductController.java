@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
  * @author whoiszxl
  * 前台商品模块
  */
-@Api(value = "product",description = "前台商品模块")
+@Api(value = "前台商品模块",description = "前台商品模块")
 @RestController
 @RequestMapping("/product/")
 public class ProductController {
