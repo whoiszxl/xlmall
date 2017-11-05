@@ -25,11 +25,14 @@ import com.zxlvoid.service.IProductService;
 import com.zxlvoid.service.IUserService;
 import com.zxlvoid.utils.PropertiesUtil;
 
+import io.swagger.annotations.Api;
+
 /**
  * 
  * @author whoiszxl
  *
  */
+@Api(value="后台商品管理模块",description="后台商品管理模块")
 @RestController
 @RequestMapping("/manage/product")
 public class ProductManageController {

@@ -15,11 +15,14 @@ import com.zxlvoid.pojo.User;
 import com.zxlvoid.service.ICategoryService;
 import com.zxlvoid.service.IUserService;
 
+import io.swagger.annotations.Api;
+
 /**
  * 
  * @author whoiszxl
  *
  */
+@Api(value="后台分类管理模块",description="后台分类管理模块")
 @RestController
 @RequestMapping("/manage/category")
 public class CategoryManageController {

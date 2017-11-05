@@ -12,6 +12,7 @@ import com.zxlvoid.common.ServerResponse;
 import com.zxlvoid.pojo.User;
 import com.zxlvoid.service.IUserService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
@@ -20,6 +21,7 @@ import io.swagger.annotations.ApiParam;
  * @author whoiszxl
  *
  */
+@Api(value="后台用户管理模块",description="后台用户管理模块")
 @RestController
 @RequestMapping("/manage/user")
 public class UserManageController {
