@@ -126,5 +126,14 @@
 			</plugin>
 		</plugins>
 		<finalName>demo</finalName>
+		<resources>
+            <resource>
+                <directory>lib</directory>
+                <targetPath>target</targetPath>
+                <includes>
+                    <include>**/*.jar</include>
+                </includes>
+            </resource>
+        </resources>
 	</build>
 </project>
