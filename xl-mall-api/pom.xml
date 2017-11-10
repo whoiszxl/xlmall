@@ -68,6 +68,15 @@
 
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>profile1</id>
+			<properties>
+				<spring.boot.mainclass>com.zxlvoid.MallApplication</spring.boot.mainclass>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 			<plugin>
