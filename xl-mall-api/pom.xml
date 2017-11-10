@@ -65,6 +65,27 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
 		</dependency>
+		
+		
+		<dependency>
+            <groupId>alipay-jar</groupId> 
+            <artifactId>jarsdk</artifactId>   
+            <version>1.0</version> 
+            <scope>system</scope>        
+             <systemPath>
+            ${basedir}/lib/alipay-sdk-java20161213173952.jar
+            </systemPath> 
+        </dependency>
+        
+        <dependency>
+            <groupId>alipay-jar</groupId> 
+            <artifactId>tradesdk</artifactId>   
+            <version>1.0</version> 
+            <scope>system</scope>        
+             <systemPath>
+            ${basedir}/lib/alipay-trade-sdk-20161215.jar
+            </systemPath> 
+        </dependency>
 
 	</dependencies>
 
@@ -90,19 +111,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>UTF-8</encoding>
-					<compilerArguments>
-						<extdirs>${project.basedir}/lib</extdirs>
-					</compilerArguments>
-				</configuration>
 			</plugin>
 		</plugins>
 		<finalName>demo</finalName>
