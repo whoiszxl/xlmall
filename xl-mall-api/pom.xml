@@ -66,7 +66,6 @@
 			<version>2.7.0</version>
 		</dependency>
 		
-		
 		<dependency>
             <groupId>alipay-jar</groupId> 
             <artifactId>jarsdk</artifactId>   
@@ -111,6 +110,19 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+					<compilerArguments>
+						<extdirs>${project.basedir}/lib</extdirs>
+					</compilerArguments>
+				</configuration>
 			</plugin>
 		</plugins>
 		<finalName>demo</finalName>
