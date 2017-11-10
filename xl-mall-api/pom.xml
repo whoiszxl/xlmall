@@ -72,7 +72,7 @@
             <version>1.0</version> 
             <scope>system</scope>        
              <systemPath>
-            ${basedir}/lib/alipay-sdk-java20161213173952.jar
+            ${project.basedir}/lib/alipay-sdk-java20161213173952.jar
             </systemPath> 
         </dependency>
         
@@ -82,7 +82,7 @@
             <version>1.0</version> 
             <scope>system</scope>        
              <systemPath>
-            ${basedir}/lib/alipay-trade-sdk-20161215.jar
+            ${project.basedir}/lib/alipay-trade-sdk-20161215.jar
             </systemPath> 
         </dependency>
 
