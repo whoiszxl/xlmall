@@ -65,26 +65,19 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>alipay-jar</groupId> 
-            <artifactId>jarsdk</artifactId>   
-            <version>1.0</version> 
-            <scope>system</scope>        
-             <systemPath>
-            ${project.basedir}/lib/alipay-sdk-java20161213173952.jar
-            </systemPath> 
-        </dependency>
-        
-        <dependency>
-            <groupId>alipay-jar</groupId> 
-            <artifactId>tradesdk</artifactId>   
-            <version>1.0</version> 
-            <scope>system</scope>        
-             <systemPath>
-            ${project.basedir}/lib/alipay-trade-sdk-20161215.jar
-            </systemPath> 
-        </dependency>
+			<groupId>com.alipay</groupId>
+			<artifactId>alipaysdk</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alipay</groupId>
+			<artifactId>tradesdk</artifactId>
+			<version>1.1</version>
+		</dependency>
+
 
 	</dependencies>
 
@@ -125,20 +118,20 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>demo</finalName>
+		<finalName>xlmall</finalName>
 		<resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*</include>
-                </includes>
-            </resource>
-        </resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 </project>

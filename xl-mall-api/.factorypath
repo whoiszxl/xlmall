@@ -125,10 +125,12 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/plugin/spring-plugin-metadata/1.2.0.RELEASE/spring-plugin-metadata-1.2.0.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/mapstruct/mapstruct/1.1.0.Final/mapstruct-1.1.0.Final.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/springfox/springfox-swagger-ui/2.7.0/springfox-swagger-ui-2.7.0.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="EXTJAR" id="F:\sb_code\xl-mall-api\lib\alipay-sdk-java20161213173952.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="EXTJAR" id="F:\sb_code\xl-mall-api\lib\alipay-trade-sdk-20161215.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/alipay/alipaysdk/1.1/alipaysdk-1.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/alipay/tradesdk/1.1/tradesdk-1.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="F:\sb_code\xl-mall-api\lib\alipay-sdk-java20161213173952-source.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="F:\sb_code\xl-mall-api\lib\alipay-sdk-java20161213173952.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="F:\sb_code\xl-mall-api\lib\alipay-trade-sdk-20161215-source.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="F:\sb_code\xl-mall-api\lib\alipay-trade-sdk-20161215.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="PLUGIN" id="net.harawata.mybatipse" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="PLUGIN" id="org.eclipse.jst.ws.annotations.core" enabled="true" runInBatchMode="false"/>
 </factorypath>
